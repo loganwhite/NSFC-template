@@ -1,0 +1,7 @@
+.DS_Store
+.texpadtmp
+*.aux
+*latexmk
+*.fls
+*.log
+*.synctex.gz

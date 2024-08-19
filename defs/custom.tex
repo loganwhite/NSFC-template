@@ -1,0 +1,16 @@
+
+
+\newcommand{\nflow}{\textbf{NF}low}
+\newcommand{\lang}{{\sc Gover}}
+
+\newenvironment{cjknumbers}{
+\xeCJKsetup{CJKspace=true}
+% 设置 0-9 以 CJK 字体输出
+\xeCJKDeclareCharClass{CJK}{`0 -> `9}
+\hspace{-0.6em}
+}%开始部分定义
+{\normalspacedchars{0,1,2,3,4,5,6,7,8,9}}%结束部分定义
+
+\newenvironment{zeroindent}
+  {\par\setlength{\parindent}{0pt}}
+  {\par}

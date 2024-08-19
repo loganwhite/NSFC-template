@@ -1,0 +1,151 @@
+% -------------------------------------------------
+% Modified from latex template of IEEE CVPR
+% -------------------------------------------------
+
+\RequirePackage[inline]{enumitem}
+\setenumerate[1]{itemsep=0pt,parsep=0pt,topsep=5pt}
+\setitemize[1]{itemsep=0pt,parsep=0pt,topsep=5pt}
+\RequirePackage{times}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{xurl}
+\RequirePackage{overpic}
+\RequirePackage[pagebackref=false,breaklinks=true,colorlinks=true,bookmarks=false,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\RequirePackage{fontspec-xetex}
+
+\RequirePackage[a4paper, left = 1.26in, right = 1.26in, top = 1in, bottom = 1in]{geometry}
+\RequirePackage{indentfirst}
+\RequirePackage{titlesec}
+\pagenumbering{gobble}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}[AutoFakeBold, AutoFakeSlant]
+%\newCJKfontfamily\kaishu{KaiTi}
+%\setCJKmainfont{KaiTi}[AutoFakeBold]
+\setCJKsansfont{SimHei}[AutoFakeBold]
+\setCJKmonofont{FangSong}[AutoFakeBold]
+\setCJKfamilyfont {song} {SimSun}% 宋体 song
+\newcommand {\song} {\CJKfamily {song}}% Song style (simsun.ttf for Windows)
+\setCJKfamilyfont {xs} {NSimSun}% 新 宋体 xs
+\newcommand {\xs} {\CJKfamily {xs}}
+\setCJKfamilyfont {fs} {FangSong_GB2312}% imitation Song 2312 fs
+\newcommand {\fs} {\CJKfamily {fs}}% imitation Song style (Windows comes with simfs.ttf)
+\setCJKfamilyfont {kai} {KaiTi}[AutoFakeBold]% 体 体 2312 kai
+\newcommand {\kai} {\CJKfamily {kai}}                          
+\setCJKfamilyfont {yh} {Microsoft YaHei}% Microsoft 雅 黑 yh
+\newcommand {\yh} {\CJKfamily {yh}}
+\setCJKfamilyfont {hei} {SimHei}% Heihei
+\newcommand {\hei} {\CJKfamily {hei}}% bold (Windows comes with simhei.ttf)
+\setCJKfamilyfont {msunicode} {Arial Unicode MS}% Arial Unicode MS: msunicode
+\newcommand {\msunicode} {\CJKfamily {msunicode}}
+\setCJKfamilyfont {li} {LiSu}% 立 书 li
+\newcommand {\li} {\CJKfamily {li}}
+\setCJKfamilyfont {yy} {YouYuan}% 幼 圆 yy
+\newcommand {\yy} {\CJKfamily {yy}}
+\setCJKfamilyfont {xm} {MingLiU}% fine body xm
+\newcommand {\xm} {\CJKfamily {xm}}
+\setCJKfamilyfont {xxm} {PMingLiU}% New detailed body xxm
+\newcommand {\xxm} {\CJKfamily {xxm}}
+
+%% 设置 0-9 以 CJK 字体输出
+%\xeCJKsetup{CJKspace=true}
+%\xeCJKDeclareCharClass{CJK}{`0 -> `9}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\newcommand{\nsfClr}[1]{\textcolor[rgb]{0.0,0.44,0.753}{#1}}
+\newcommand{\alert}[1]{\nsfClr{\emph{#1}}}
+\newcommand{\ContentDes}[1]{
+   \setcounter{section}{0}
+   {\vspace{0.5em}\fontsize{14pt}{22pt}\selectfont \bf \kai {\alert{#1}} }% %{\vspace*{12pt} \NsfcNote{#2} }%
+}
+
+
+
+\def\@maketitle{ %\newpage \null \vskip .01in
+   \begin{center} {\fontsize{16pt}{22pt}\selectfont\bf\kai\@title\par}\end{center}
+}
+
+
+% old nsfc section definition
+%\newcommand{\NsfcSection}[3]{{\large\kai
+%\vspace{1em}
+%  \setcounter{section}{#1}
+%  \setcounter{subsection}{0}
+%  \indent \nsfClr{#1. }{\bfseries{\alert{#2}}}{\alert{#3}}%
+%}}
+% new nsfc section definition
+\newcommand{\NsfcSection}[3]{{\fontsize{14pt}{22pt}\selectfont\kai
+  \setcounter{section}{#1}
+  \setcounter{subsection}{0}
+  \vspace{0.5em}\indent \nsfClr{\begin{cjknumbers}#1.\end{cjknumbers} }{\bfseries{\alert{#2}}}{\alert{#3}}%
+}}
+
+
+% old stuff
+%\renewcommand\refname{
+%  \textcolor{black}{\hskip 2pt  \emph{\large 参考文献：}}
+%}
+\renewcommand\refname{
+  \textcolor{black}{\hskip 2pt  \emph{\fontsize{12pt}{\baselineskip}\kai 主要参考文献：}}
+}
+\renewcommand{\figurename}{\hei\small 图}
+\renewcommand{\tablename}{\hei\small 表}
+
+\def\cvprsubsection{\@startsection {subsection}{2}{\z@}
+   {2pt plus 2pt minus 2pt}{2pt} {\fontsize{12pt}{22pt}\selectfont\bf\kai}}
+\def\cvprssubsect#1{\cvprsubsection*{\large #1}}
+% old stuff, having a '.' behind subsection label
+% \def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1}}  
+\def\cvprsubsect#1{\cvprsubsection{\hskip -1em~#1}}
+\def\subsection{\@ifstar\cvprssubsect\cvprsubsect}
+\titlespacing\subsubsection{0pt}{8pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\renewcommand\UrlFont{\rmfamily} % change the url font
+
+% set line skip 
+%\setlength{\baselineskip}{22pt}
+
+%\setlength{\parskip}{0.1\baselineskip}
+%\renewcommand{\baselinestretch}{1.2}
+%\fontsize{12pt}{22pt}\selectfont
+
+% indent first line with 2 characters
+\setlength{\parindent}{2em}
+
+
+
+% set bib item sep
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+\setlength{\bibitemsep}{0\baselineskip plus .05\baselineskip minus .05\baselineskip}
+% end setting bib item sep
+
+%%% Make figure placement a little more predictable.
+% We trust the user to move figures if this results
+% in ugliness.
+% Minimize bad page breaks at figures
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\dblfloatpagefraction}{0.99}
+\renewcommand{\dbltopfraction}{0.99}
+\setcounter{totalnumber}{99}
+\setcounter{topnumber}{99}
+\setcounter{bottomnumber}{99}
+
+
+% ---------------------------------------------------------------
+
+\RequirePackage{silence}
+\WarningFilter{latexfont}{Font shape `}
+\WarningFilter{latexfont}{Some font shapes were not available,}
